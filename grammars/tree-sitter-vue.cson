@@ -1,11 +1,28 @@
 name: 'Vue'
 scopeName: 'text.html.vue'
 type: 'tree-sitter'
-parser: 'tree-sitter-javascript'
+parser: 'tree-sitter-vue'
 
 fileTypes: ['vue']
 
-injectionRegex: '^vue$|^Vue$'
+injectionRegex: '^[Vv]ue$'
 
 scopes:
   component: 'text.html.vue'
+  
+  '''
+  element > start_tag > tag_name,
+  element > end_tag > tag_name,
+  element > self_closing_tag > tag_name
+  ''': 'entity.name.tag.html'
+  
+  start_tag: 'punctuation.definition.tag.begin.html'
+  end_tag: 'punctuation.definition.tag.end.html'
+  self_closing_tag: 'punctuation.definition.tag.html'
+
+  '''
+  interpolation > "{{",
+  interpolation > "}}"
+  ''': 'meta.brace.curly.js'
+  
+  attribute_name: 'entity.other.attribute-name.html'
