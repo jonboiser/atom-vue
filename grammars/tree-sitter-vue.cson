@@ -1,0 +1,11 @@
+name: 'Vue'
+scopeName: 'text.html.vue'
+type: 'tree-sitter'
+parser: 'tree-sitter-javascript'
+
+fileTypes: ['vue']
+
+injectionRegex: '^vue$|^Vue$'
+
+scopes:
+  component: 'text.html.vue'
