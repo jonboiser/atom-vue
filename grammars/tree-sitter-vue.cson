@@ -7,22 +7,48 @@ fileTypes: ['vue']
 
 injectionRegex: '^[Vv]ue$'
 
+comments:
+  start: '<!-- '
+  end: ' -->'
+
+
 scopes:
   component: 'text.html.vue'
-  
-  '''
-  element > start_tag > tag_name,
-  element > end_tag > tag_name,
-  element > self_closing_tag > tag_name
-  ''': 'entity.name.tag.html'
-  
-  start_tag: 'punctuation.definition.tag.begin.html'
-  end_tag: 'punctuation.definition.tag.end.html'
+
+  # HTML scopes
   self_closing_tag: 'punctuation.definition.tag.html'
+
+  tag_name: 'entity.name.tag.html'
+
+  '''
+  start_tag > "<",
+  end_tag > "</" 
+  ''': 'punctuation.definition.tag.begin.html'
+
+  '''
+  start_tag > ">",
+  end_tag > ">"
+  ''': 'punctuation.definition.tag.end.html'
+
+  'attribute > quoted_attribute_value': 'string.quoted.html'
+
+  comment: 'comment.block.html'
+
+  '''
+  comment > "<!--",
+  comment > "-->",
+  ''': 'punctuation.definition.comment.html'
+
+  '"<>"': 'invalid.illegal.incomplete.html'
+  
+  # Vue-Specific Syntax
+  '''
+  attribute_name,
+  directive_name,
+  directive_argument
+  ''': 'entity.other.attribute-name.html'
 
   '''
   interpolation > "{{",
   interpolation > "}}"
   ''': 'meta.brace.curly.js'
-  
-  attribute_name: 'entity.other.attribute-name.html'
