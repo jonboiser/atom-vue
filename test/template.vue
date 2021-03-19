@@ -114,3 +114,18 @@ div id="footer"
 <template>
   <header #title="Hi">Hello, world!</header>
 </template>
+
+
+<template>
+  <CustomComponent
+    v-if="progress > 0"
+    class="progress-icon"
+    :progress="progress"
+  />
+  <CustomComponent
+    v-if="progress > 0"
+    class="progress-icon"
+    :progress="progress"
+  ></CustomComponent>
+</template>
+  
